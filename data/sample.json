@@ -1,0 +1,36 @@
+{
+  "resources": [
+    {
+      "row_id": "r1",
+      "path": [
+        "education",
+        "learning",
+        "2026-10"
+      ],
+      "value": {
+        "rows": 23
+      }
+    },
+    {
+      "row_id": "r2",
+      "path": [
+        "education",
+        "learning",
+        "2026-11"
+      ],
+      "value": {
+        "rows": 31
+      }
+    },
+    {
+      "row_id": "r3",
+      "path": [
+        "education",
+        "courses"
+      ],
+      "value": {
+        "schema": 1
+      }
+    }
+  ]
+}

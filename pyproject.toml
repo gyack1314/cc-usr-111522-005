@@ -1,0 +1,6 @@
+[project]
+name = "catalog-locks"
+version = "0.1.0"
+description = "教育数据仓湖资料工具"
+requires-python = ">=3.11"
+dependencies = []
