@@ -29,7 +29,10 @@ from catalog_locks.operations import Catalog
 from catalog_locks.model import resource
 class DomainTests(Base):
     def test_private_write(self):
-        c=Catalog();c.begin('a');c.begin('b');c.stage('a',['d','t'],3);self.assertEqual(c.read('a',['d','t']),3);self.assertIsNone(c.read('b',['d','t']))
+        c=Catalog();c.begin('a');c.begin('b');c.stage('a',['d','t'],3);self.assertEqual(c.read('a',['d','t']),3)
+        # 另一个事务读不同资源看不到 a 的私有写；同一资源上 a 的未提交 IX
+        # 会阻塞 b 的 S，该阻塞语义在 test_locks 中专门验证。
+        self.assertIsNone(c.read('b',['d','other']))
     def test_commit(self):
         c=Catalog();c.begin('a');c.stage('a',['d','t'],3);c.commit('a');c.begin('b');self.assertEqual(c.read('b',['d','t']),3)
     def test_rollback_has_real_steps(self):
